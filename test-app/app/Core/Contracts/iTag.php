@@ -16,6 +16,13 @@ interface iTag
 	
 	// Геттер одного атрибута по имени:
 	public function getAttr($name);
+
+	// Сеттер установки типа тега: opening | closing | single
+	// перевести на enum
+	public function setType($type);
+
+	// Гетер типа тега
+	public function getType($type);
 	
 	// Открывающий тег, текст и закрывающий тег:
 	public function show();

@@ -20,7 +20,10 @@ $pageContent = $page->getContent();
 //echo $pageContent . PHP_EOL;
 printf("Beginning of the HTML code:\n %-256.256s...\n", $pageContent);
 
-$arr = $page->parse();
+$arr = $page->parseStageOne();
+var_dump($arr);
+
+$arr = $page->parseStageTwo();
 
 var_dump($arr);
 

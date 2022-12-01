@@ -10,6 +10,7 @@ class Tag implements iTag
 	private $name;
 	private $attrs = [];
 	private $text = '';
+	private $type = '';
 	
 	public function __construct($name)
 	{
@@ -78,6 +79,16 @@ class Tag implements iTag
 		}
 		
 		return $this;
+	}
+
+	public function setType($type)
+	{
+		$this->type = $type;
+	}
+
+	public function getType($type)
+	{
+		return $this->type;
 	}
 	
 	public function removeAttr($name)
