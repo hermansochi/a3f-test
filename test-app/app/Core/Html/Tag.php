@@ -1,7 +1,9 @@
 <?php
 declare(strict_types = 1);
 
-namespace App\Core\Html;
+namespace Core\Html;
+
+use Core\Contracts\iTag;
 
 class Tag implements iTag
 {

@@ -8,7 +8,7 @@ down: docker-down
 restart: down up
 
 run:
-	docker compose run --rm test-php-cli php app/index.php
+	docker compose run --rm test-php-cli php app/index.php ${HOST}
 
 images:
 	docker images
