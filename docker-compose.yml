@@ -1,0 +1,8 @@
+version: "3.9"
+services:
+    test-php-cli:
+        build:
+            context: test-app/docker
+            dockerfile: development/php-cli/Dockerfile
+        volumes:
+            - ./test-app:/app:ro
