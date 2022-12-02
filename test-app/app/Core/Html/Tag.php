@@ -7,14 +7,17 @@ use Core\Contracts\iTag;
 
 class Tag implements iTag
 {
-	private $name;
-	private $attrs = [];
-	private $text = '';
-	private $type = '';
+	private ?string $name;
+	private array $attrs = [];
+	private string $text = '';
+	private string $type = '';
+	private bool $isValid;
+	private ?string $errorMessage = null;
 	
-	public function __construct($name)
+	public function __construct($name = null)
 	{
 		$this->name = $name;
+		$this->isValid = (is_null($name)) ? false : true;
 	}
 	
 	public function getName()
@@ -86,9 +89,29 @@ class Tag implements iTag
 		$this->type = $type;
 	}
 
-	public function getType($type)
+	public function getType()
 	{
 		return $this->type;
+	}
+
+	public function setValid($valid)
+	{
+		$this->isValid = $valid;
+	}
+
+	public function isValid()
+	{
+		return $this->isValid;
+	}
+
+	public function setError($message)
+	{
+		$this->errorMessage = $message;
+	}
+
+	public function getError()
+	{
+		return $this->errorMessage;
 	}
 	
 	public function removeAttr($name)

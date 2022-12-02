@@ -17,14 +17,11 @@ printf("Parsing:  %s\n", $url);
 $page = new Page($url);
 
 $pageContent = $page->getContent();
-//echo $pageContent . PHP_EOL;
 printf("Beginning of the HTML code:\n %-256.256s...\n", $pageContent);
 
-$arr = $page->parseStageOne();
-var_dump($arr);
-
-$arr = $page->parseStageTwo();
-
-var_dump($arr);
+$page->parse();
+$page->showVDom();
+$page->getStats();
+$page->showStats();
 
 printf("Execution time: %f\n", microtime(true) - START);

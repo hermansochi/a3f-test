@@ -22,7 +22,15 @@ interface iTag
 	public function setType($type);
 
 	// Гетер типа тега
-	public function getType($type);
+	public function getType();
+
+	public function setValid($valid);
+	
+	public function isValid();
+	
+	public function setError($message);
+	
+	public function getError();
 	
 	// Открывающий тег, текст и закрывающий тег:
 	public function show();
@@ -45,7 +53,6 @@ interface iTag
 	// Удаление атрибута:
 	public function removeAttr($name);
 	
-	// Установка класса:
 	public function addClass($className);
 	
 	// Удаление класса:
