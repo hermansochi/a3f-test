@@ -10,29 +10,49 @@ use Core\Html\Tag;
 class Page implements iPage
 {
 	private string $url;
-	private string $fileContent = '';
+	private ?string $fileContent = null;
 	private ?array $allTags = null;
 	private ?array $stats = null;
 	
-	public function __construct($url)
+	/**
+	 * @param string $url URL для загрузки страницы
+	 * @return void
+	 */
+	public function __construct(string $url)
 	{
 		$this->url = $url;
 	}
 
-	public function setUrl($url): void
+	/**
+	 * Установить URL для загрузки страницы.
+	 * Так же URL можно задать при создании объекта.
+	 * @param string $url
+	 * @return void
+	 */
+	public function setUrl(string $url): void
 	{
 		$this->url = $url;
 	}
 
+	/**
+	 * Получить URL.
+	 * @param string $url
+	 * @return void
+	 */
 	public function getUrl(): string
 	{
 		return $this->name;
 	}
 	
+	/**
+	 * Загрузить страницу, сохранить ее в приватном свойстве и вернуть.
+	 * Для упрощения без обработки ощибок
+	 * @param string $url
+	 * @return void
+	 */
 	public function getContent(): string
 	{
 		$content = file_get_contents($this->url);
-
 		if (!(false === $content)) {
 			$this->fileContent = $content;
 		}

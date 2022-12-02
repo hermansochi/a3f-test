@@ -5,6 +5,12 @@ namespace Core\Contracts;
 
 interface iPage
 {
+	/**
+	 * Установить URL для загрузки страницы.
+	 * Так же URL можно задать при создании объекта.
+	 * @param string $url
+	 * @return void
+	 */
 	public function setUrl($url): void;
 
 	public function getUrl(): string;
