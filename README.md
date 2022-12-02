@@ -11,8 +11,8 @@
 3. HOST=https://site.for.test make run - посчитает количество тегов для указанного сайта.
 
 ## Примеры:
-![pwd.hermna.team](https://github.com/hermansochi/a3f-test/raw/master/asserts/pwd_herman_team.png)
+![pwd.hermna.team](https://github.com/hermansochi/a3f-test/raw/master/assets/pwd_herman_team.png)
 
-![habr.com](https://github.com/hermansochi/a3f-test/raw/master/asserts/habr_com.png)
+![habr.com](https://github.com/hermansochi/a3f-test/raw/master/assets/habr_com.png)
 
-![kuban.rbc.ru](https://github.com/hermansochi/a3f-test/raw/master/asserts/kuban_rbc.ru.png)
+![kuban.rbc.ru](https://github.com/hermansochi/a3f-test/raw/master/assets/kuban_rbc.ru.png)
