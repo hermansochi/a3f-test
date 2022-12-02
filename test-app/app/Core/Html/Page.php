@@ -9,6 +9,12 @@ use Core\Html\Tag;
 
 class Page implements iPage
 {
+	/**
+	 * @var string $url URL страницы для парсинга
+	 * @var ?string $fileContent контент загруженной страницы
+	 * @var ?array $allTags массив в ключе 0 - теги страницы в текстовом виде, в ключе 1 - "виртуальные" теги класса Tag
+	 * @var ?string $stats массив статистика распарсенной страницы. В ключе - тег, в значение кол-во вхождений на странице
+	 */
 	private string $url;
 	private ?string $fileContent = null;
 	private ?array $allTags = null;
@@ -36,8 +42,7 @@ class Page implements iPage
 
 	/**
 	 * Получить URL.
-	 * @param string $url
-	 * @return void
+	 * @return string
 	 */
 	public function getUrl(): string
 	{
@@ -46,9 +51,8 @@ class Page implements iPage
 	
 	/**
 	 * Загрузить страницу, сохранить ее в приватном свойстве и вернуть.
-	 * Для упрощения без обработки ощибок
-	 * @param string $url
-	 * @return void
+	 * Для упрощения без обработки ошибок
+	 * @return string
 	 */
 	public function getContent(): string
 	{
@@ -59,20 +63,18 @@ class Page implements iPage
 		return $this->fileContent;
 	}
 
+	/**
+	 * Распарсить ранее загруженную страницу.
+	 * Вернет массив в 0 ключе которого массив с загруженными тегами,
+	 * во 1 ключе массив с созданными "виртуальными" тегами Tag.
+	 * Решение не красивое, но рефакторить в тестовом не стал.
+	 * @throws \Exception Ошибки парсинга
+	 * @return array
+	 */
 	public function parse(): array
 	{
-		$this->parseStageOne();
-		return $this->parseStageTwo();
-	}
-
-	public function parseStageOne(): array
-	{
 		preg_match_all('/<.*?>/', $this->fileContent, $this->allTags);
-		return $this->allTags[0];
-	}
 
-	public function parseStageTwo(): array
-	{
 		if (count($this->allTags[0]) === 0) {
 			throw new \Exception('Nothing to parse');
 		}
@@ -90,6 +92,10 @@ class Page implements iPage
 		return $this->allTags;
 	}
 
+	/**
+	 * Показать исходную и распарсенную страницы.
+	 * @return void
+	 */
 	public function showVDom(): void
 	{
 		if (count($this->allTags[1]) === 0) {
@@ -116,6 +122,14 @@ class Page implements iPage
 		}
 	}
 
+	/**
+	 * Посчитать статистику по тегам по распарсенной ранее странице
+	 * Можно сделать приватным.
+	 * Сохранит в свойствах и вернет массив в ключе - имя тега, в
+	 * значении количество использований на странице.
+	 * @throws \Exception Ошибки парсинга
+	 * @return array
+   */
 	public function getStats(): array
 	{
 		if (count($this->allTags[1]) === 0) {
@@ -141,6 +155,10 @@ class Page implements iPage
 		return $this->stats;
 	}
 
+	/**
+	 * Показать статистику по тегам на странице.
+	 * @return void
+	 */
 	public function showStats(): void
 	{
 		if (count($this->stats) === 0) {

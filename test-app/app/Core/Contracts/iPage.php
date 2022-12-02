@@ -11,21 +11,41 @@ interface iPage
 	 * @param string $url
 	 * @return void
 	 */
-	public function setUrl($url): void;
+	public function setUrl(string $url): void;
 
+	/**
+	 * Получить URL.
+	 * @return string
+	 */
 	public function getUrl(): string;
 	
+	/**
+	 * Загрузить страницу.
+	 * @return string
+	 */
 	public function getContent(): string;
 	
+	/**
+	 * Распарсить ранее загруженную страницу.
+	 * @return array
+	 */
 	public function parse(): array;
 
-	public function parseStageOne(): array;
-	
-	public function parseStageTwo(): array;
-
+	/**
+	 * Показать исходную и распарсенную страницы
+	 * @return void
+	 */
 	public function showVDom(): void;
 
+	/**
+	 * Посчитать статистику по тегам по распарсенной ранее странице
+	 * @return array
+	 */
 	public function getStats(): array;
 
+	/**
+	 * Посчитать статистику по тегам
+	 * @return void
+	 */
 	public function showStats(): void;
 }

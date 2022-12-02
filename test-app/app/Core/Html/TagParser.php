@@ -5,6 +5,9 @@ namespace Core\Html;
 
 use Core\Html\Tag;
 
+/**
+ * Интерфейс для тестового счел излишним ))
+ */
 class TagParser //implements iPage
 {
 	/**
@@ -35,12 +38,12 @@ class TagParser //implements iPage
 		'wbr'
 	];
 	
-	public function __construct($tag = null)
+	public function __construct(string $tag = null)
 	{
 		$this->tag = $tag;
 	}
 
-	public function setTag($tag): void
+	public function setTag(string $tag): void
 	{
 		$this->tag = $tag;
 	}
@@ -50,12 +53,17 @@ class TagParser //implements iPage
 		return $this->tag;
 	}
 	
-	public function parse()
+	/**
+	 * Сначала замахнулся на полный парсинг, создание virtualDOM, но понял, что буду делать несколько дней.
+	 * Поэтому только то просили. Теги и их кол-во на странице.
+	 * @return Core\Html\Tag;
+	 */
+	public function parse(): Tag
 	{
 		/**
 		 * Валидация тегов сильно упрощена.
 		 * 
-		 * Стадия парсинга tag | attrib | attribValue 
+		 * Стадия парсинга tag | attrib | attribValue  - не актуально, аттрибуты решил не парсить ))
 		 * @var stirng $parseStage
 		 * Тип тега opening | closing | singleton
 		 * @var string $tagType

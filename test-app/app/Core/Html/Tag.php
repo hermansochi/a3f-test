@@ -5,6 +5,9 @@ namespace Core\Html;
 
 use Core\Contracts\iTag;
 
+/**
+ * Краткое описание в интерфейсе Core\Contracts\iTag;
+ */
 class Tag implements iTag
 {
 	private ?string $name;
