@@ -75,7 +75,7 @@ class Page implements iPage
 		if (count($this->allTags[1]) === 0) {
 			throw new \Exception('No vDom.');
 		}
-		printf("%-80.80s| %-80.80s\n", 'Source:', 'Parsed:');
+		printf("\nvDOM:\n%-80.80s| %-80.80s\n", 'Source:', 'Parsed:');
 		for ($i = 0; $i < count($this->allTags[0]); $i++) {
 			$tag = $this->allTags[1][$i];
 			$tagStr = '';

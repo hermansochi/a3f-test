@@ -17,7 +17,7 @@ printf("Parsing:  %s\n", $url);
 $page = new Page($url);
 
 $pageContent = $page->getContent();
-printf("Beginning of the HTML code:\n %-256.256s...\n", $pageContent);
+printf("\nBeginning of the HTML code:\n %-256.256s...\n", $pageContent);
 
 $page->parse();
 $page->showVDom();
